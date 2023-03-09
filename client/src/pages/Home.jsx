@@ -1,0 +1,64 @@
+import { useState, useEffect } from 'react';
+
+import { Component1, Component2, Component3 } from '../components';
+
+import { exampleArray } from '../constants/index';
+
+const Home = () => {
+  const [loading, setLoading] = useState(false);
+  const [allPosts, setAllPosts] = useState(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:8080/api/test', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+          const result = await response.json();
+          setAllPosts(result.data.reverse()); // show latest post on top
+        }
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPosts();
+  }, []);
+
+  return (
+    <section>
+      <div>
+        <h1>MERN Starter Code</h1>
+        <p>This is a starter code for MERN projects.</p>
+      </div>
+      <div>
+        <h3>DATA FROM MONGODB</h3>
+        {loading ? ( 'Loading...' ) : (
+          <ul>
+            {allPosts?.map((e, i) => (
+              <li key={i}>{e.name}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div>
+        <h3>COMPONENTS</h3>
+        <Component1 />
+        <Component2 />
+        <Component3 />
+      </div>
+      <div>
+        <h3>DATA FROM STATIC CONSTANTS</h3>
+        {exampleArray.map((e, i) => (
+          <p key={i}>{e}</p>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Home;
