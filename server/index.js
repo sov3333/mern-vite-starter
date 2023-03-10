@@ -1,6 +1,7 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
+import methodOverride from 'method-override';
 
 import connectDB from './mongodb/connect.js';
 import testRoutes from './routes/testRoutes.js';
@@ -10,6 +11,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(methodOverride("_method"));
 app.use('/api/test', testRoutes);
 
 const PORT = process.env.PORT || 8080;

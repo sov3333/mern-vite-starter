@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Component1, Component2, Component3 } from '../components';
 
 import { exampleArray } from '../constants/index';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
 
@@ -29,6 +32,22 @@ const Home = () => {
     fetchPosts();
   }, []);
 
+  const handleDelete = async (e, prop) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch(`http://localhost:8080/api/test/${prop}?_method=DELETE`, {
+          method: 'POST',
+      });
+      await response.json();
+      window.location.reload(); // Refresh the page
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section>
       <div>
@@ -40,7 +59,23 @@ const Home = () => {
         {loading ? ( 'Loading...' ) : (
           <ul>
             {allPosts?.map((e, i) => (
-              <li key={i}>{e.name}</li>
+              <li key={i}>
+                {e.name}
+                <Link 
+                  to={`/update/${e._id}`} 
+                  state={{ 
+                    id: e._id,
+                    name: e.name,
+                    createdAt: e.createdAt,
+                    updatedAt: e.updatedAt,
+                  }}
+                >
+                  <button>UPDATE</button>
+                </Link>
+                <form onSubmit={(event) => handleDelete(event, e._id)}>
+                  <input type="submit" value="DELETE" />
+                </form>
+              </li>
             ))}
           </ul>
         )}

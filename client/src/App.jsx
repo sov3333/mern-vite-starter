@@ -1,7 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import { logo, logo_full } from './assets';
-import { Home, CreatePost } from './pages';
+import { Home, CreatePost, UpdatePost } from './pages';
 
 import './App.css'
 
@@ -12,14 +12,13 @@ const App = () => {
         <Link to='/'>
           <img src={logo} alt="logo" />
         </Link>
-        <Link to='/test'>
-          <button>Create a Post</button>
-        </Link>
+        <Link to='/create'><button>Create a Post</button></Link>
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/test" element={<CreatePost />} />
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="/update/:id" element={<UpdatePost />} />
         </Routes>
       </main>
       <footer>

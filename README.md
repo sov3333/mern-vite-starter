@@ -17,7 +17,7 @@ Backend:
 4. In the package.json file:
 - Add to scripts: `"start": "nodemon index"`.
 - Add below description: `"type": "module",` so that we can use ES6 import/exports instead of require statements.
-5. Install dependencies: `npm i cors dotenv express mongoose nodemon`
+5. Install dependencies: `npm i cors dotenv express mongoose nodemon method-override`
 
 ### Install and Run
 

@@ -29,7 +29,32 @@ router.route('/').post(async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error });
     }
+});
 
+// PUT
+router.route('/:id').put(async (req, res) => {
+    try {
+        const updatedPost = await Post.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true },
+        );
+        console.log(`Updated Post:`, updatedPost)
+        res.status(201).json({ success: true, data: updatedPost });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error });
+    }
+});
+
+// DELETE
+router.route('/:id').delete(async (req, res) => {
+    try {
+        const removedPost = await Post.findByIdAndRemove(req.params.id);
+        console.log(`Removed Post:`, removedPost)
+        res.status(201).json({ success: true, data: removedPost });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error });
+    }
 });
 
 
