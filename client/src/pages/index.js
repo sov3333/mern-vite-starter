@@ -1,7 +1,7 @@
 import Home from './Home';
-import Test from './Test';
+import CreatePost from './CreatePost';
 
 export {
     Home,
-    Test,
+    CreatePost,
 } ;
