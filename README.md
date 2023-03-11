@@ -2,7 +2,7 @@
 
 A template for MERN projects.
 
-## Setup
+## Setup Skeleton
 
 Frontend:
 1. `mkdir client`
@@ -30,3 +30,11 @@ Backend:
 2. rename `.env.example` to `.env`.
 3. Run `mongod` with `brew services start mongodb-community@6.0` and check connection with `mongosh`.
 4. `npm start` to start express server.
+
+## Setup Chakra UI
+
+- https://chakra-ui.com/getting-started
+
+```
+npm i @chakra-ui/react @chakra-ui/icons @emotion/react @emotion/styled framer-motion
+```

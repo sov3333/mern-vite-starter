@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 
 import { Component1, Component2, Component3 } from '../components';
 
@@ -70,10 +71,10 @@ const Home = () => {
                     updatedAt: e.updatedAt,
                   }}
                 >
-                  <button>UPDATE</button>
+                  <Button colorScheme='yellow' variant='solid'>UPDATE</Button>
                 </Link>
                 <form onSubmit={(event) => handleDelete(event, e._id)}>
-                  <input type="submit" value="DELETE" />
+                  <Button colorScheme='red' variant='solid' type="submit">DELETE</Button>
                 </form>
               </li>
             ))}

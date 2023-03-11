@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 
 const UpdatePost = () => {
     const navigate = useNavigate();
@@ -50,7 +51,9 @@ const UpdatePost = () => {
         <p>Last Updated: {updatedAt}</p>
         <form onSubmit={handleSubmit}>
             <textarea name="name" placeholder="Name" value={formData.name} onChange={handleChange} /><br/>
-            <input type="submit" name="" value="Submit Changes"/>
+            <Button colorScheme='yellow' variant='solid' type="submit">
+                Submit Changes
+            </Button>
         </form>
       </div>
     </div>

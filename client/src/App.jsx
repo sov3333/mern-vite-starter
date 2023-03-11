@@ -2,6 +2,8 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import { logo, logo_full } from './assets';
 import { Home, CreatePost, UpdatePost } from './pages';
+import { Button } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 
 import './App.css'
 
@@ -12,7 +14,11 @@ const App = () => {
         <Link to='/'>
           <img src={logo} alt="logo" />
         </Link>
-        <Link to='/create'><button>Create a Post</button></Link>
+        <Link to='/create'>
+          <Button colorScheme='green' variant='solid' leftIcon={<AddIcon />}>
+            Create a Post
+          </Button>
+        </Link>
       </header>
       <main>
         <Routes>

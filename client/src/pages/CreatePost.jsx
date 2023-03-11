@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -47,9 +48,9 @@ const CreatePost = () => {
         ) : (
           <>
           <input type="text" name="name" placeholder="Enter a name" value={formData.name} onChange={handleChange}  />
-          <button type="submit">
+          <Button colorScheme='green' variant='solid' type="submit">
             Create item in MongoDB
-          </button>
+          </Button>
           </>
         )}
         
