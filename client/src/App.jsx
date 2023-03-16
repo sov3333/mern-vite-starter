@@ -2,7 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import { logo, logo_full } from './assets';
 import { Home, CreatePost, UpdatePost } from './pages';
-import { SidebarWithHeader } from './components';
+import { Nav } from './components';
 import { Button } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 
@@ -11,8 +11,8 @@ import './App.css'
 const App = () => {
   return (
     <BrowserRouter>
-      <SidebarWithHeader children={(
-        <>
+      <Nav />
+      <div>
         <header>
           <Link to='/'>
             <img src={logo} alt="logo" />
@@ -33,10 +33,7 @@ const App = () => {
         <footer>
           <img src={logo_full} alt="logo" />
         </footer>
-        </>
-      )} />
-        
-      
+      </div>
     </BrowserRouter>
   )
 }
