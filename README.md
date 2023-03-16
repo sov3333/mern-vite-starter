@@ -38,3 +38,7 @@ Backend:
 ```
 npm i @chakra-ui/react @chakra-ui/icons @emotion/react @emotion/styled framer-motion
 ```
+
+## Setup Phaser 3.55.2
+
+- `npm i phaser@3.55.2 phaser-matter-collision-plugin`
