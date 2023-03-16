@@ -1,10 +1,10 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import { logo, logo_full } from './assets';
-import { Home, CreatePost, UpdatePost } from './pages';
+import { Home, Map, CreatePost, UpdatePost } from './pages';
 import { SidebarWithHeader } from './components';
 import { Button } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
 import './App.css'
 
@@ -22,10 +22,16 @@ const App = () => {
               Create a Post
             </Button>
           </Link>
+          <Link to='/map'>
+            <Button colorScheme='blue' variant='solid' leftIcon={<ArrowRightIcon />}>
+              Play Game
+            </Button>
+          </Link>
         </header>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/create" element={<CreatePost />} />
             <Route path="/update/:id" element={<UpdatePost />} />
           </Routes>
